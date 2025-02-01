@@ -232,4 +232,29 @@ public enum Language: String, Hashable, Equatable, CaseIterable, Sendable {
         case .zulu:                   return AzureTTSVoice(lang: "zu-ZA", gender: "Female", name: "zu-ZA-ThandoNeural")
         }
     }
+    
+    public var fromRight: Bool {
+        switch self {
+        case .arabicEgypt, .urdu, .hebrew, .persian:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    public var needsSpaceBetweenWords: Bool {
+        switch self {
+        case .japanese,
+             .chineseSimplified,
+             .chineseTraditionalTaiwan,
+             .korean,
+             .thai,
+             .khmer,
+             .lao,
+             .myanmar:
+            return false
+        default:
+            return true
+        }
+    }
 }
